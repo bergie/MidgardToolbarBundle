@@ -57,7 +57,15 @@ Toolbars can be used either directly, or through a toolbar provider. Direct tool
 
 ### Centralized toolbars
 
+Centralized toolbars are accessible from the provider by name. You can have multiple. For example, the [Midcom Compatibility Bundle](https://github.com/bergie/MidgardMidcomCompatBundle/) uses four:
+
+* `view`: Toolbar associated with the main object of a page (actions like "edit")
+* `node`: Toolbar associated with the bundle that provides the current view (actions like "add")
+* `host`: Site-wide toolbar (actions like "logout")
+* `help`: Access to contextual help
+
     $toolbar = $this->container->get('midgard.toolbar.provider')->get('main');
     $toolbar->addItem(...);
     
-    echo $this->containet->get('midgard.toolbar.provider')->render('main');
+    echo $this->container->get('midgard.toolbar.provider')->render('main');
+    // or echo $toolbar->render();
