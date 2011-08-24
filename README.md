@@ -64,6 +64,8 @@ Centralized toolbars are accessible from the provider by name. You can have mult
 * `host`: Site-wide toolbar (actions like "logout")
 * `help`: Access to contextual help
 
+Quick usage example:
+
     $toolbar = $this->container->get('midgard.toolbar.provider')->get('main');
     $toolbar->addItem(...);
     
