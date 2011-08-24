@@ -1,9 +1,11 @@
 Symfony2 Toolbar Bundle
 =======================
 
-This bundle provides simple toolbars for Symfony2 applications. The toolbars consist of buttons that may have icons, labels and accesskeys associated with them. The buttons may trigger GET or POST actions on URLs.
+This bundle provides simple [toolbars](http://en.wikipedia.org/wiki/Toolbar) for Symfony2 applications. The toolbars consist of buttons that may have icons, labels and accesskeys associated with them. The buttons may trigger GET or POST actions on URLs.
 
 The toolbars have been designed to be quite similar to [the toolbar concept in the MidCOM](http://www.midgard-project.org/development/mrfc/0026/) framework.
+
+If you are looking for navigation menus instead of action-oriented toolbars, then [KnpMenuBundle](https://github.com/knplabs/KnpMenuBundle) is a better option.
 
 ## Installation
 
