@@ -3,7 +3,7 @@ Symfony2 Toolbar Bundle
 
 This bundle provides simple toolbars for Symfony2 applications. The toolbars consist of buttons that may have icons, labels and accesskeys associated with them. The buttons may trigger GET or POST actions on URLs.
 
-The toolbars have been designed to be quite similar to the toolbar concept in the MidCOM framework.
+The toolbars have been designed to be quite similar to [the toolbar concept in the MidCOM](http://www.midgard-project.org/development/mrfc/0026/) framework.
 
 ## Installation
 
