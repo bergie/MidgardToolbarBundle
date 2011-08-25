@@ -18,11 +18,13 @@ class ToolbarProvider extends ContainerAware
             $toolbars = $request->attributes->get('midgard_toolbars');
             if (!isset($toolbars[$toolbar])) {
                 $toolbars[$toolbar] = new Toolbar();
+                $toolbars[$toolbar]->setContainer($this->container);
                 $request->attributes->set('midgard_toolbars', $toolbars);
             }
         } else {
             $toolbars = array();
             $toolbars[$toolbar] = new Toolbar();
+            $toolbars[$toolbar]->setContainer($this->container);
             $request->attributes->set('midgard_toolbars', $toolbars);
         }
         return $toolbars[$toolbar];

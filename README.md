@@ -57,6 +57,22 @@ Toolbars can be used either directly, or through a toolbar provider. Direct tool
 
     echo $toolbar->render();
 
+In addition to providing direct URLs to the `addItem` method, you can also have the Symfony2 router generate them for you. In that case provide the URL in array format, for example:
+
+    $toolbar->addItem(
+        array(
+            'url' => array(
+                'route' => '_demo_hello',
+                'parameters' => array(
+                    'name' => 'World',
+                ),
+            ),
+            'label' => 'Say hello',
+        )
+    );
+
+For URL generation to work, you need to pass the Dependency Injection container to the toolbar with the `setContainer` method. Centralized toolbars explained below do this step automatically.
+
 ### Centralized toolbars
 
 Centralized toolbars are accessible from the provider by name. You can have multiple. For example, the [Midcom Compatibility Bundle](https://github.com/bergie/MidgardMidcomCompatBundle/) uses four:

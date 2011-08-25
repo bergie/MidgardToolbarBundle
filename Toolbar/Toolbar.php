@@ -1,7 +1,9 @@
 <?php
 namespace Midgard\ToolbarBundle\Toolbar;
 
-class Toolbar
+use Symfony\Component\DependencyInjection\ContainerAware;
+
+class Toolbar extends ContainerAware
 {
     private $class = '';
     private $id = '';
@@ -77,11 +79,41 @@ class Toolbar
         return null;
     }
 
+    private function normalizeUrl($url)
+    {
+        if (is_string($url)) {
+            return $url;
+        }
+
+        if (!is_array($url)) {
+            throw new \InvalidArgumentException('URLs have to be defined as strings or arrays');
+        }
+
+        if (!$this->container) {
+            throw new \RuntimeException('You must provide Dependency Injection container to the Toolbar before passing it parametrized URLs');
+        }
+
+        if (!isset($url['route'])) {
+            throw new \InvalidArgumentException('URL array must include a route identifier');
+        }
+
+        if (!isset($url['parameters'])) {
+            $url['parameters'] = array();
+        }
+
+        if (!isset($url['absolute'])) {
+            $url['absolute'] = false;
+        }
+
+        return $this->container->get('router')->generate($url['route'], $url['parameters'], $url['absolute']);
+    }
+
     private function normalizeItem(array $item)
     {
         if (!isset($item['url'])) {
             throw new \InvalidArgumentException("Toolbar items must have URLs");
         }
+        $item['url'] = $this->normalizeUrl($item['url']);
 
         if (!isset($item['options'])) {
             $item['options'] = array();
@@ -230,5 +262,10 @@ class Toolbar
         $output .= "</button></form>";
 
         return $output;
+    }
+
+    public function __sleep()
+    {
+        return array('class', 'id', 'items');
     }
 }
