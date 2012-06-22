@@ -1,0 +1,23 @@
+{
+    "name": "midgard/toolbar-bundle",
+    "type": "symfony-bundle",
+    "description": "Toolbar handling for Symfony2 applications",
+    "keywords": ["Toolbar"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Henri Bergius",
+            "email": "henri.bergius@iki.fi",
+            "homepage": "http://bergie.iki.fi/"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.2",
+        "symfony/symfony": "2.*"
+    },
+
+    "autoload": {
+        "psr-0": { "Midgard\\ToolbarBundle": "" }
+    },
+    "target-dir": "Midgard/ToolbarBundle"
+}
