@@ -21,6 +21,11 @@ class Toolbar extends ContainerAware
         }
     }
 
+    public function items()
+    {
+        return $this->items;
+    }
+
     public function addItem(array $item)
     {
         $this->items[] = $this->normalizeItem($item);
@@ -33,9 +38,19 @@ class Toolbar extends ContainerAware
         }
     }
 
+    public function getItem($index)
+    {
+        $this->checkIndex($index);
+        return $this->items[$index];
+    }
+
     public function removeItem($index)
     {
         $this->checkIndex($index);
+        if (count($this->items) == 1) {
+            $this->items = array();
+            return;
+        }
         $this->items = array_splice($this->items, $index, 1);
     }
 
@@ -53,7 +68,7 @@ class Toolbar extends ContainerAware
     public function disableItem($index)
     {
         $this->checkIndex($index);
-        $this->item[$index]['enabled'] = false;
+        $this->items[$index]['enabled'] = false;
     }
 
     public function hideItem($index)
